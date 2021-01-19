@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme: Theme) =>
       overflow: 'hidden',
     },
     gridList: {
-      width: '80%',
+      width: '100%',
     },
     icon: {
       color: 'rgba(255, 255, 255, 0.54)',
@@ -30,50 +30,20 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export default function ItemContainer() {
-  const classes = useStyles();
-  const [tileData, setTileData] = useState<ItemModel[]>([]);
+const ItemContainer = ({ item }: { item: ItemModel }) => (
 
-  useEffect(() => {
-    async function fetchData() {
-      const res = await getData("https://fakerapi.it/api/v1/images?_quantity=100&_type=kittens");
-      setTileData(res.data);
-    }
-    fetchData();
-  }, [])
+    <GridListTile key={item.url}>
+      <img src={item.url} alt={item.title} />
+      <GridListTileBar
+        title={item.title}
+        subtitle={<span>Description: {item.description}</span>}
+        actionIcon={
+          <IconButton aria-label={`info about ${item.title}`}>
+            <InfoIcon />
+          </IconButton>
+        }
+      />
+    </GridListTile>
+)
 
-  return (
-    <div className={classes.root}>
-      <GridList cellHeight={400}>
-        <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
-          <ListSubheader component="div">
-            <Typography variant="h2">
-              Showcase
-            </Typography>
-          </ListSubheader>
-        </GridListTile>
-        {tileData.map((tileData) => (
-          <GridListTile key={tileData.url}>
-            <img src={tileData.url} alt={tileData.title} />
-            <GridListTileBar
-              title={tileData.title}
-              subtitle={<span>Description: {tileData.title}</span>}
-              actionIcon={
-                <IconButton aria-label={`info about ${tileData.title}`} className={classes.icon}>
-                  <InfoIcon />
-                </IconButton>
-                }
-              />
-          </GridListTile>
-        ))}
-      </GridList>
-    </div>
-  )
-}
-
-async function getData(url = "") {
-  const response = await fetch(url, {
-    method: "GET"
-  })
-  return response.json()
-}
+export default ItemContainer;

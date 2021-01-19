@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     container: {
       display: 'flex',
-      justifyContent: 'center',
+      justifyContent: 'space-between',
     },
     toolbar: {
       width: '70%',
@@ -36,22 +36,20 @@ export default function Header() {
 
   return (
     <div className={classes.root}>
-        <AppBar position="static">
-          <div className={classes.container}>
-            <ToolBar className={classes.toolbar}>
-              <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                <MenuIcon />
-              </IconButton>
-              <Typography variant="h6" className={classes.title}>
-                J.D. Makes Stuff
-              </Typography>
-              <Button color="inherit" component={RouterLink} to="/">Home</Button>
-              <Button color="inherit" component={RouterLink} to="/gallery">Gallery</Button>
-              <Button color="inherit" component={RouterLink} to="/blog">Blog</Button>
-              <Button color="inherit" component={RouterLink} to="/about">About</Button>
-            </ToolBar>
-          </div>
-        </AppBar>
+      <AppBar position="static">
+        <div className={classes.container}>
+          <ToolBar className={classes.toolbar}>
+            <Typography variant="h6" className={classes.title}>
+              J.D. Makes Stuff
+            </Typography>
+            <Button color="inherit" component={RouterLink} to="/">Home</Button>
+            <Button color="inherit" component={RouterLink} to="/gallery">Gallery</Button>
+            <Button color="inherit" component={RouterLink} to="/blog">Blog</Button>
+            <Button color="inherit" component={RouterLink} to="/about">About</Button>
+            <Button color="inherit" component={RouterLink} to="/contact">Contact</Button>
+          </ToolBar>
+        </div>
+      </AppBar>
     </div>
   );
 }

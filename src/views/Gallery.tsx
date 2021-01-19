@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 
-import ItemContainer from "../components/ItemContainer";
+import ItemList from "../components/ItemList";
 import SideNav from "../components/SideNav";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -29,11 +29,8 @@ export default function Gallery() {
 
   return (
     <div className={classes.root}>
-      <div className={classes.sideNav}>
-        <SideNav />
-      </div>     
       <div className={classes.content}>
-        <ItemContainer />
+        <ItemList />
       </div>
     </div>
   )
