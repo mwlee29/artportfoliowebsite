@@ -1,17 +1,21 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
 
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 import { GridListTileBar } from "@material-ui/core";
-import { ListSubheader } from "@material-ui/core";
 import { IconButton } from "@material-ui/core";
 import InfoIcon from "@material-ui/icons/Info";
 
-import { ItemModel } from "../model/ItemModel";
-import { Typography } from "@material-ui/core";
+/*
+  Was having some problems with decoupling the GridListTile from ItemList,
+  I couldn't figure out how to fit the content to the container. Will need
+  more testing to see if I can figure it out later.
+*/
 
+
+import { ItemModel } from "../model/ItemModel";
+
+const ImageHeight: number = 200;
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -27,23 +31,31 @@ const useStyles = makeStyles((theme: Theme) =>
     icon: {
       color: 'rgba(255, 255, 255, 0.54)',
     },
+    image: {
+      display: 'flex',
+      flexGrow: 1,
+      height: '100%',
+    }
   }),
 );
 
-const ItemContainer = ({ item }: { item: ItemModel }) => (
+function ItemContainer({ title, url, description }: ItemModel) {
+  const classes = useStyles();
 
-    <GridListTile key={item.url}>
-      <img src={item.url} alt={item.title} />
+  return (
+    <>
+      <img src={url} alt={title} className={classes.image} />
       <GridListTileBar
-        title={item.title}
-        subtitle={<span>Description: {item.description}</span>}
+        title={title}
+        subtitle={<span>Description: {description}</span>}
         actionIcon={
-          <IconButton aria-label={`info about ${item.title}`}>
+          <IconButton aria-label={`info about ${title}`}>
             <InfoIcon />
           </IconButton>
         }
       />
-    </GridListTile>
-)
+    </>
+  )
+}
 
 export default ItemContainer;

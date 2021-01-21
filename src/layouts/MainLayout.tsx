@@ -3,7 +3,6 @@ import * as React from 'react';
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 
 import Header from "../components/Header";
-import SideNav from "../components/SideNav";
 
 type MainLayoutProps = {
   children: React.ReactNode;
@@ -17,7 +16,8 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     contentContainer: {
       display: 'flex',
-      flexDirection: 'column',
+      marginTop: '15px'
+      //flexDirection: 'column',
     },
   })
 );
