@@ -14,9 +14,6 @@ const useStyles = makeStyles((theme: Theme) =>
       height: '600px',
       width: '600px',
     },
-    testOne: {
-      width: '50%',
-    }
   })
 )
 
@@ -25,8 +22,8 @@ function About() {
 
   return (
     <div className={classes.root}>
-      <Grid container direction="column" justify="center" alignItems="center" spacing={3}>
-        <Grid item xs className={classes.testOne}>
+      <Grid container direction="column" alignItems="center">
+        <Grid item xs>
           <img src={artistPhoto} alt="artist" className={classes.image} />
         </Grid>
         <Grid item xs>

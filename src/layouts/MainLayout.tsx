@@ -13,12 +13,21 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       display: 'flex',
       flexDirection: 'column',
+      margin: 0,
+    },
+    mainContainer: {
+      display: 'flex',
+      height: '100%',
+      justifyContent: 'center',
     },
     contentContainer: {
-      display: 'flex',
-      marginTop: '15px'
-      //flexDirection: 'column',
+      width: '65%',
+      height: '100%',
+      backgroundColor: theme.palette.primary.main,
     },
+    subheader: {
+      height: theme.spacing(8),
+    }
   })
 );
 
@@ -26,12 +35,15 @@ function MainLayout({ children }: MainLayoutProps ) {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <body className={classes.root}>
       <Header />
-      <div className={classes.contentContainer}>
-        { children }
+      <div className={classes.mainContainer}>
+        <div className={classes.contentContainer}>
+          <div className={classes.subheader} />
+          { children }
+        </div>
       </div>
-    </div>
+    </body>
   )
 }
 
