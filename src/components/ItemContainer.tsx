@@ -15,14 +15,11 @@ import InfoIcon from "@material-ui/icons/Info";
 
 import { ItemModel } from "../model/ItemModel";
 
-const ImageHeight: number = 200;
-
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       display: 'flex',
-      flexWrap: 'wrap',
-      justifyContent: 'flex-end',
+      justifyContent: 'space-around',
       overflow: 'hidden',
     },
     gridList: {
@@ -33,28 +30,27 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     image: {
       display: 'flex',
-      flexGrow: 1,
       height: '100%',
     }
   }),
 );
 
-function ItemContainer({ title, url, description }: ItemModel) {
+function ItemContainer({ item }: { item: ItemModel }) {
   const classes = useStyles();
 
   return (
-    <>
-      <img src={url} alt={title} className={classes.image} />
+    <div className={classes.root}>
+      <img src={item.url} alt={item.title} className={classes.image} />
       <GridListTileBar
-        title={title}
-        subtitle={<span>Description: {description}</span>}
+        title={item.title}
+        subtitle={<span>Description: {item.description}</span>}
         actionIcon={
-          <IconButton aria-label={`info about ${title}`}>
+          <IconButton aria-label={`info about ${item.title}`}>
             <InfoIcon />
           </IconButton>
         }
       />
-    </>
+    </div>
   )
 }
 

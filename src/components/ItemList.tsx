@@ -8,9 +8,10 @@ import { ListSubheader } from "@material-ui/core";
 import { GridListTileBar } from "@material-ui/core";
 import { IconButton } from "@material-ui/core";
 import InfoIcon from "@material-ui/icons/Info";
-
 import { ItemModel } from "../model/ItemModel";
 import { Typography } from "@material-ui/core";
+
+//import ItemContainer from "./ItemContainer";
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -48,7 +49,7 @@ export default function ItemList() {
   return (
     <div className={classes.root}>
       <GridList cellHeight={400} spacing={2}>
-        <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
+        <GridListTile key="Subheader" cols={4} style={{ height: 'auto' }}>
           <ListSubheader component="div">
             <Typography variant="h2">
               Showcase
@@ -56,7 +57,7 @@ export default function ItemList() {
           </ListSubheader>
         </GridListTile>
         {tileData.map((tileData) => (
-          <GridListTile key={tileData.url}>
+          <GridListTile>
             <img src={tileData.url} alt={tileData.title} />
             <GridListTileBar
               title={tileData.title}
@@ -65,7 +66,7 @@ export default function ItemList() {
                 <IconButton aria-label={`info about ${tileData.title}`}>
                   <InfoIcon />
                 </IconButton>
-                } 
+              }
             />
           </GridListTile>
         ))}
